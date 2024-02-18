@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: formbricks
+  namespace: blog
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: blog-project
+  source:
+    repoURL: https://github.com/nmcclain/formbricks-helm.git
+    targetRevision: HEAD
+    path: formbricks
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: blog
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpbingo
+  namespace: blog
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: blog-project
+  source:
+    repoURL: https://github.com/estahn/charts.git
+    targetRevision: HEAD
+    path: charts/httpbingo
+    helm:
+      parameters:
+      - name: image.tag
+        value: v2.13.1
+      version: v3
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: blog
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

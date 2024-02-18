@@ -1,0 +1,884 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "repo"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 72
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "phase"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 151
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sync message"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 124
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "namespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 142
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Namespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 103
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "App Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Last Sync"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 183
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 99
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Health"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 117
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Git Hash"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 114
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 21,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.1.5",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "metadata.name",
+              "text": "App Name",
+              "type": "string"
+            },
+            {
+              "selector": "metadata.namespace",
+              "text": "Namespace",
+              "type": "string"
+            },
+            {
+              "selector": "status.health.status",
+              "text": "Health",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.finishedAt",
+              "text": "Last Sync",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.message",
+              "text": "Sync Message",
+              "type": "string"
+            },
+            {
+              "selector": "status.sync.status",
+              "text": "Status",
+              "type": "string"
+            },
+            {
+              "selector": "status.history.0.revision",
+              "text": "Git Hash",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false
+          },
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "$[].items",
+          "source": "url",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://argocd-server/api/v1/applications",
+          "url_options": {
+            "data": "",
+            "headers": [
+              {
+                "key": "header-key",
+                "value": "SECRET"
+              }
+            ],
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "ArgoCD App Status",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "App Name": 0,
+              "Git Hash": 5,
+              "Health": 2,
+              "Last Sync": 4,
+              "Message": 6,
+              "Namespace": 1,
+              "Status": 3
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "repo"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 287
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "phase"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 151
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 125
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "sync message"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "namespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 106
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "targetRevision"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 127
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "App Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 94
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Namespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 97
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Branch/Tag"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 94
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Path"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 130
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Repository"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 344
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 21,
+        "x": 0,
+        "y": 5
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.1.5",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "metadata.name",
+              "text": "App Name",
+              "type": "string"
+            },
+            {
+              "selector": "metadata.namespace",
+              "text": "Namespace",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.repoURL",
+              "text": "Repository",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.targetRevision",
+              "text": "Branch/Tag",
+              "type": "string"
+            },
+            {
+              "selector": "status.summary.images",
+              "text": "Images",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.path",
+              "text": "Path",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false
+          },
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "$[].items",
+          "source": "url",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://argocd-server/api/v1/applications",
+          "url_options": {
+            "data": "",
+            "headers": [
+              {
+                "key": "header-key",
+                "value": "SECRET"
+              }
+            ],
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "ArgoCD App Details",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "App Name": 0,
+              "Branch/Tag": 3,
+              "Images": 5,
+              "Namespace": 1,
+              "Path": 4,
+              "Repository": 2
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "afterRender": "",
+        "content": "<ul class=\"cards\">\n  {{#each data}}\n  <li class=\"cards__item\">\n    <div class=\"card\">\n      <div class=\"card__content\">\n        <div class=\"card__title\">{{name}}</div>\n        <p class=\"card__text\">\n          Namespace: <b>{{namespace}}</b>\n          <a target=\"_blank\" href=\"{{repository}}\">\n            {{repository}}/{{path}} {{target}}<br>\n            Hash: {{hash}}<br>\n            Health {{health}}<br>\n            Sync status: {{status}}<br>\n            Synced: {{syncfinished}}<br>\n            {{messsage}}<br>\n\nImages: {{images}}<br>\n        </p>\n      </div>\n    </div>\n  </li>\n  {{/each}}\n</ul>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "html"
+        },
+        "editors": [
+          "styles"
+        ],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "allRows",
+        "styles": ".cards {\n  display: flex;\n  flex-wrap: wrap;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n.cards__item {\n  display: flex;\n  padding: 0.1rem;\n\n  @media(min-width: 56rem) {\n    width: 30%;\n  }\n}\n\n.card {\n  width: 100%;\n  border-radius: 0.5rem;\n  border-color: #aaa;\n  border-width: 2px;\n  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);\n  border-style: solid;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n\n  &:hover {\n    .card__image {\n      filter: contrast(100%);\n    }\n  }\n}\n\n.card__content {\n  display: flex;\n  flex: 1 1 auto;\n  flex-direction: column;\n  padding: 1rem;\n}\n\n.card__title {\n  color: #f06;\n  font-size: 1.25rem;\n  font-weight: 300;\n  letter-spacing: 2px;\n  text-transform: uppercase;\n}\n\n.card__text {\n  flex: 1 1 auto;\n  font-size: 0.875rem;\n  line-height: 1.5;\n  margin-bottom: 1.25rem;\n}",
+        "wrap": false
+      },
+      "pluginVersion": "4.3.0",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "metadata.name",
+              "text": "name",
+              "type": "string"
+            },
+            {
+              "selector": "metadata.namespace",
+              "text": "namespace",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.repoURL",
+              "text": "repository",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.targetRevision",
+              "text": "target",
+              "type": "string"
+            },
+            {
+              "selector": "status.summary.images",
+              "text": "images",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.path",
+              "text": "path",
+              "type": "string"
+            },
+            {
+              "selector": "status.health.status",
+              "text": "health",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.finishedAt",
+              "text": "syncfinished",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.message",
+              "text": "message",
+              "type": "string"
+            },
+            {
+              "selector": "status.sync.status",
+              "text": "status",
+              "type": "string"
+            },
+            {
+              "selector": "status.history.0.revision",
+              "text": "hash",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false
+          },
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "$[].items",
+          "source": "url",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://argocd-server/api/v1/applications",
+          "url_options": {
+            "data": "",
+            "headers": [
+              {
+                "key": "header-key",
+                "value": "SECRET"
+              }
+            ],
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "ArgoCD Apps",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "App Name": 0,
+              "Branch/Tag": 3,
+              "Images": 5,
+              "Namespace": 1,
+              "Path": 4,
+              "Repository": 2
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 19,
+        "x": 0,
+        "y": 22
+      },
+      "id": 3,
+      "options": {
+        "afterRender": "",
+        "content": "# {{name}}\n\nns: {{namespace}}\n\n{{repository}}\n{{target}}\n\n🫒{{path}}\n\n{{images}}\n\n---\n\n```json\n{{{json @root}}}\n```",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 200,
+          "language": "markdown"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "4.3.0",
+      "targets": [
+        {
+          "columns": [
+            {
+              "selector": "metadata.name",
+              "text": "name",
+              "type": "string"
+            },
+            {
+              "selector": "metadata.namespace",
+              "text": "namespace",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.repoURL",
+              "text": "repository",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.targetRevision",
+              "text": "target",
+              "type": "string"
+            },
+            {
+              "selector": "status.summary.images",
+              "text": "images",
+              "type": "string"
+            },
+            {
+              "selector": "status.operationState.syncResult.source.path",
+              "text": "path",
+              "type": "string"
+            }
+          ],
+          "computed_columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c36466ab-9377-43a0-9896-802aaf9b1ad5"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "json_options": {
+            "columnar": false
+          },
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "$[].items",
+          "source": "url",
+          "summarizeExpression": "",
+          "type": "json",
+          "url": "https://argocd-server/api/v1/applications",
+          "url_options": {
+            "data": "",
+            "headers": [
+              {
+                "key": "header-key",
+                "value": "SECRET"
+              }
+            ],
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "ArgoCD App Details",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {
+              "App Name": 0,
+              "Branch/Tag": 3,
+              "Images": 5,
+              "Namespace": 1,
+              "Path": 4,
+              "Repository": 2
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "ArgoCD API dashboard",
+  "uid": "b32b8974-bebc-47be-899b-64089cf11999",
+  "version": 1,
+  "weekStart": ""
+}
