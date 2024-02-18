@@ -8,6 +8,7 @@ argo-cd:
       enabled: true
       applicationLabels:
         enabled: true
+        labels: ["business_unit", "team_name"]
   dex:
     metrics:
       enabled: true
